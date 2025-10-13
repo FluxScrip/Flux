@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FluxUnlock — Complete Steps to Unlock</title>
+<meta name="description" content="FluxUnlock — complete quick ad steps to unlock your link. First click may open a sponsored page (popunder)." />
+<style>
+/* ========= FLUXUNLOCK — SINGLE FILE CSS ========= */
+:root{
+  --bg1:#04050a; --bg2:#0b0f1e;
+  --text:#eaf1ff; --muted:#9fb0cf;
+  --accent:#6ea8ff; --accent2:#8a5bff; --good:#35e39a; --bad:#ff7aa2;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;overflow-x:hidden;background:linear-gradient(180deg,var(--bg1),var(--bg2))}
+/* Animated background glow */
+.bg-anim{position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(900px 400px at 20% -10%, rgba(138,91,255,.25), transparent 60%),
+  radial-gradient(900px 420px at 80% 110%, rgba(110,168,255,.18), transparent 60%),
+  linear-gradient(180deg, var(--bg1), var(--bg2));
+animation:bgShift 12s ease-in-out infinite alternate}
+@keyframes bgShift{0%{filter:hue-rotate(0)}100%{filter:hue-rotate(25deg)}}
+
+.topbar{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;background:rgba(10,12,18,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);z-index:10}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
+.logo{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
+.nav a{color:var(--muted);text-decoration:none}
+
+.ad-slot{min-height:80px;border:1px dashed rgba(255,255,255,.18);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);margin:.5rem 1rem}
+.wrapper{max-width:760px;margin:0 auto;padding:1rem}
+.header{text-align:center;margin:1rem 0}
+.header h1{margin:0 0 .4rem;font-weight:800}
+
+.steps{display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem}
+.step{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:.6rem .6rem .5rem;box-shadow:0 8px 30px -26px rgba(0,0,0,.8)}
+.step-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(90deg, rgba(110,168,255,.25), rgba(138,91,255,.25));font-weight:800;color:var(--text);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+.step-btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px -18px rgba(0,0,0,.8)}
+.step-foot{display:flex;align-items:center;gap:.6rem;margin:.4rem .25rem 0 .25rem;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:.4rem;padding:.18rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:.78rem}
+.badge.locked{background:rgba(255,122,162,.12);color:#ffd0de;border-color:rgba(255,122,162,.36)}
+.badge.unlocked{background:rgba(53,227,154,.12);color:#bff5df;border-color:rgba(53,227,154,.36)}
+.status{flex:1;min-width:160px;color:var(--muted)}
+.timer{font-variant-numeric:tabular-nums;min-width:80px;text-align:right;color:var(--accent)}
+
+.progress-wrap{margin:1rem 0}
+.progress{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.progress .bar{height:100%;background:linear-gradient(90deg, var(--accent), var(--accent2));width:0%}
+
+.unlock{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin:1rem 0}
+.unlock-btn{padding:.9rem 1.2rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(90deg, var(--accent2), var(--accent));color:var(--text);font-weight:800;letter-spacing:.3px;cursor:pointer;opacity:.8}
+.unlock-btn:enabled{opacity:1}
+.unlock-btn:disabled{cursor:not-allowed;opacity:.5}
+
+.footer{margin-top:1rem;text-align:center}
+/* ========= END CSS ========= */
+</style>
+</head>
+<body>
+  <div class="bg-anim" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand"><span class="logo">F</span> FluxUnlock</div>
+    <nav class="nav"><a href="#steps">Steps</a> · <a href="#unlock">Unlock</a></nav>
+  </header>
+
+  <!-- Top banner slot: paste your Adsterra banner script between these divs -->
+  <div class="ad-slot" id="ad-top">Top banner</div>
+
+  <main class="wrapper">
+    <header class="header">
+      <h1>Complete Steps To Get Link!</h1>
+      <p class="muted">Click <strong>Open Ad</strong> on each step. Stay at least <strong>5s</strong> then return.</p>
+    </header>
+
+    <section id="steps" class="steps">
+      <!-- ====== 6 STEPS ====== -->
+      <div class="step" data-task="ad1">
+        <button class="step-btn" onclick="openAd('ad1')"><span>Open Ad #1</span><span>Open Ad →</span></button>
+        <div class="step-foot"><span class="badge locked" id="status-ad1">Locked</span><span class="status" id="msg-ad1">Not started</span><span class="timer" id="timer-ad1"></span></div>
+      </div>
+      <div class="step" data-task="ad2">
+        <button class="step-btn" onclick="openAd('ad2')"><span>Open Ad #2</span><span>Open Ad →</span></button>
+        <div class="step-foot"><span class="badge locked" id="status-ad2">Locked</span><span class="status" id="msg-ad2">Not started</span><span class="timer" id="timer-ad2"></span></div>
+      </div>
+      <div class="step" data-task="ad3">
+        <button class="step-btn" onclick="openAd('ad3')"><span>Open Ad #3</span><span>Open Ad →</span></button>
+        <div class="step-foot"><span class="badge locked" id="status-ad3">Locked</span><span class="status" id="msg-ad3">Not started</span><span class="timer" id="timer-ad3"></span></div>
+      </div>
+      <div class="step" data-task="ad4">
+        <button class="step-btn" onclick="openAd('ad4')"><span>Open Ad #4</span><span>Open Ad →</span></button>
+        <div class="step-foot"><span class="badge locked" id="status-ad4">Locked</span><span class="status" id="msg-ad4">Not started</span><span class="timer" id="timer-ad4"></span></div>
+      </div>
+      <div class="step" data-task="ad5">
+        <button class="step-btn" onclick="openAd('ad5')"><span>Open Ad #5</span><span>Open Ad →</span></button>
+        <div class="step-foot"><span class="badge locked" id="status-ad5">Locked</span><span class="status" id="msg-ad5">Not started</span><span class="timer" id="timer-ad5"></span></div>
+      </div>
+      <div class="step" data-task="ad6">
+        <button class="step-btn" onclick="openAd('ad6')"><span>Open Ad #6</span><span>Open Ad →</span></button>
+        <div class="step-foot"><span class="badge locked" id="status-ad6">Locked</span><span class="status" id="msg-ad6">Not started</span><span class="timer" id="timer-ad6"></span></div>
+      </div>
+    </section>
+
+    <div class="progress-wrap">
+      <div class="progress"><div class="bar" id="bar" style="width:0%"></div></div>
+      <div class="muted" id="progressText" style="font-size:.9rem;margin-top:.25rem">Steps Completed 0/6</div>
+    </div>
+
+    <section id="unlock" class="unlock">
+      <button id="unlockBtn" class="unlock-btn" disabled onclick="goToFinal()">Get Your Link</button>
+      <div class="muted" style="font-size:.9rem">Set your final URL inside the script below.</div>
+    </section>
+
+    <!-- In-content banner row (4) -->
+    <section class="ad-row" style="display:grid;grid-template-columns:repeat(1,1fr);gap:.75rem">
+      <div class="ad-slot">In-content banner</div>
+      <div class="ad-slot">In-content banner</div>
+      <div class="ad-slot">In-content banner</div>
+      <div class="ad-slot">In-content banner</div>
+    </section>
+
+    <footer class="footer">
+      <div class="ad-slot" id="ad-bottom">Bottom banner</div>
+      <div class="muted" style="font-size:.8rem">First click may open a sponsored page (popunder). Replace the placeholder with your Adsterra script when live.</div>
+    </footer>
+  </main>
+
+<!-- ========= FLUXUNLOCK — SINGLE FILE JS ========= -->
+<script>
+// ---- CONFIG: set your own links ----
+const CONFIG = {
+  minDwellSeconds: 5,
+  finalUrl: "https://example.com/linkvertise-placeholder" // TODO: your Linkvertise URL
+};
+const AD_URL = {
+  ad1: "https://example.com/", // TODO: Adsterra Direct Link for task #1
+  ad2: "https://example.com/", // TODO: Adsterra Direct Link for task #2
+  ad3: "https://example.com/", // TODO: Adsterra Direct Link for task #3
+  ad4: "https://example.com/", // TODO: Adsterra Direct Link for task #4
+  ad5: "https://example.com/", // TODO: Adsterra Direct Link for task #5
+  ad6: "https://example.com/"  // TODO: Adsterra Direct Link for task #6
+};
+
+// ---- STATE ----
+const key = "fluxunlock_single_state_v1";
+let state = { completed:{}, openTime:{}, popFired:false };
+try { Object.assign(state, JSON.parse(localStorage.getItem(key)||"{}")); } catch {}
+function save(){ localStorage.setItem(key, JSON.stringify(state)); }
+
+// ---- POPUNDER (placeholder) ----
+// Replace this with your Adsterra popunder script for production.
+function firePopunder(){
+  try{ window.open("https://example.com/", "_blank", "noopener"); }
+  catch(e){ /* ignored */ }
+}
+// Fire once on first user click
+document.addEventListener("click", () => {
+  if(state.popFired) return;
+  state.popFired = true; save();
+  firePopunder();
+}, { once:true });
+
+// ---- UI HELPERS ----
+function badge(id, ok){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.textContent = ok ? "Completed" : "Locked";
+  el.classList.toggle("unlocked", ok);
+  el.classList.toggle("locked", !ok);
+}
+function progress(){
+  let done = 0;
+  Object.keys(AD_URL).forEach(k => { if(state.completed[k]) done++; });
+  const pct = Math.round(done / 6 * 100);
+  document.getElementById("bar").style.width = pct + "%";
+  document.getElementById("progressText").textContent = `Steps Completed ${done}/6`;
+  document.getElementById("unlockBtn").disabled = done !== 6;
+}
+function msg(id, t){ const el = document.getElementById("msg-"+id); if(el) el.textContent = t; }
+function setTimer(id, t){ const el = document.getElementById("timer-"+id); if(el) el.textContent = t; }
+
+// ---- COUNTDOWN ----
+const timers = {};
+function startCountdown(taskId){
+  clearInterval(timers[taskId]);
+  const target = (state.openTime[taskId] || Date.now()) + CONFIG.minDwellSeconds*1000;
+  timers[taskId] = setInterval(() => {
+    const remain = Math.ceil((target - Date.now())/1000);
+    if(remain > 0){ setTimer(taskId, `Wait ${remain}s`); msg(taskId,"Ad opened…"); }
+    else { setTimer(taskId, "Ready"); msg(taskId,"Return to this tab to complete"); clearInterval(timers[taskId]); }
+  }, 200);
+}
+
+// ---- TASK OPEN ----
+function openAd(taskId){
+  const url = AD_URL[taskId] || "https://example.com/";
+  const w = window.open(url, "_blank", "noopener");
+  if(!w){ msg(taskId, "Popup blocked. Allow popups for this site."); return; }
+  state.openTime[taskId] = Date.now(); save();
+  msg(taskId, "Ad opened… stay 5s");
+  startCountdown(taskId);
+}
+window.openAd = openAd;
+
+// ---- VERIFY ON RETURN ----
+document.addEventListener("visibilitychange", () => {
+  if(document.visibilityState === "visible"){
+    Object.keys(AD_URL).forEach(verify);
+  }
+});
+function verify(taskId){
+  const start = state.openTime[taskId];
+  if(!start) return;
+  const elapsed = (Date.now() - start)/1000;
+  if(elapsed < CONFIG.minDwellSeconds){
+    const remain = Math.ceil(CONFIG.minDwellSeconds - elapsed);
+    msg(taskId, `You came back too early. Wait ${remain}s more.`);
+    startCountdown(taskId);
+    return;
+  }
+  state.completed[taskId] = true; save();
+  setTimer(taskId, ""); msg(taskId, "Completed ✓");
+  badge("status-"+taskId, true);
+  progress();
+}
+
+// ---- FINAL UNLOCK ----
+function goToFinal(){ window.location.href = CONFIG.finalUrl; }
+window.goToFinal = goToFinal;
+
+// ---- INITIAL RENDER ----
+["ad1","ad2","ad3","ad4","ad5","ad6"].forEach(id => badge("status-"+id, !!state.completed[id]));
+progress();
+</script>
+<!-- ========= END SINGLE FILE JS ========= -->
+</body>
+</html>
